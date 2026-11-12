@@ -39,6 +39,7 @@ export async function probeExternalRuntimeProvider(
     )
       return 'antigravity'
     if (adapterVersion?.startsWith('opencode@')) return 'opencode'
+    if (adapterVersion?.startsWith('dsh@')) return 'dsh'
 
     return undefined
   } catch {

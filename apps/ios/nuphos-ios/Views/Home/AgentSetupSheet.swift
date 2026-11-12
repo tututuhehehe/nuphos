@@ -45,6 +45,7 @@ struct AgentSetupView: View {
 
     private static let providers: [(RuntimeInstance.Provider, vendor: String)] = [
         (.claudeCode, "Anthropic"), (.codex, "OpenAI"), (.grok, "xAI"), (.antigravity, "Google"), (.opencode, "OpenCode"),
+        (.dsh, "DeepSeek"),
     ]
 
     private var connected: Bool { login?.state == "connected" }
@@ -100,7 +101,9 @@ struct AgentSetupView: View {
                         ProviderIcon(provider: item, size: 30)
                         VStack(alignment: .leading, spacing: 1) {
                             Text(RuntimeInstance.Provider.name(item.rawValue)).foregroundStyle(Theme.heading)
-                            Text(entry.vendor).font(.footnote).foregroundStyle(.secondary)
+                            // DeepSeek Harness is still a preview upstream.
+                            Text(item == .dsh ? "\(entry.vendor) · Preview" : entry.vendor)
+                                .font(.footnote).foregroundStyle(.secondary)
                         }
                         Spacer()
                         if item == provider {

@@ -105,7 +105,7 @@ class AgentRuntimeApiTest {
     }
     @Test fun allProvidersAndTypedStepsUseTheExistingActorBoundContract() = runTest {
         status = 201; response = runtime
-        for (provider in listOf("grok", "antigravity", "opencode")) {
+        for (provider in listOf("grok", "antigravity", "opencode", "dsh")) {
             api.create(provider, null); assertEquals("{\"provider\":\"$provider\"}", payload())
         }
         status = 200

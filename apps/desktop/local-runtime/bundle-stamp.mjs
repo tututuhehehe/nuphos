@@ -35,6 +35,8 @@ export const RUNTIME_SOURCES = [
   'grok-login.mjs',
   'antigravity-login.mjs',
   'opencode-login.mjs',
+  'dsh-login.mjs',
+  'dsh-sign-in.mjs',
   'acp-shim.mjs',
   'reply-images.mjs',
   'reply-image-stream.mjs',
