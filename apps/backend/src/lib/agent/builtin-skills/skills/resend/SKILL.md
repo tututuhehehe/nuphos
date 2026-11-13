@@ -79,12 +79,15 @@ address, and the tag `{"name": "nuphos_trigger", "value": "<triggerId>"}`.
 Record each send where the dedupe rule says, then report the run: who was
 mailed, the ids, and who was skipped and why.
 
-Only the user creates or widens a grant. Writing a grant into a Trigger, or
-widening its sender, template, recipient rule or cap, needs a
-`request_user_decision` card with category `approval` that quotes the exact
-block and the Trigger's schedule. Write it only after the user approves that card. Narrowing a grant or
-removing it needs no approval. Disabling or deleting the Trigger, or removing
-the block, revokes it.
+Only the Trigger's owner creates or changes a grant, and the server enforces
+it. Before writing a new grant or changing any line of one, ask in this
+conversation with `request_user_decision`: category `approval`, one question,
+the exact block (every line as you will write it) and the Trigger's schedule
+in the body, and `Approve this grant` as an option. Write the block only after
+the owner picks that option, from this same conversation. Without it the write
+fails with 403 `email_grant_not_approved`. Removing the block needs no
+approval. Disabling or deleting the Trigger, or removing the block, revokes
+it.
 
 If the binding you need is not listed in this session's credentials, the user has
 not enabled Resend for this conversation. Ask them to enable it — do not look for
