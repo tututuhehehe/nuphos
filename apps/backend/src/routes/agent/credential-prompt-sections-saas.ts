@@ -165,7 +165,7 @@ export function appendResendIntegrationLines(
         : 'This key has full access: it can read and manage domains, audiences, contacts and api-keys in addition to sending.'
 
     lines.push(
-      `- integrationId=${integration.integrationId}; label=${safePromptField(integration.label)}; permission=${integration.permission}; setupCommand="bash skills/resend/scripts/setup-credentials.sh ${teamId} ${integration.integrationId}"; tip="${permissionTip} Send only the mail the user explicitly asked for, to the recipients they named — never bulk-send, test-send, or improvise a recipient. Do not print the API key into chat."`,
+      `- integrationId=${integration.integrationId}; label=${safePromptField(integration.label)}; permission=${integration.permission}; setupCommand="bash skills/resend/scripts/setup-credentials.sh ${teamId} ${integration.integrationId}"; tip="${permissionTip} Send only the mail the user explicitly asked for, to the recipients they named — never bulk-send, test-send, or improvise a recipient. Only a Trigger fire whose instruction holds a standing email grant may send beyond that, within the grant (see the resend skill). Do not print the API key into chat."`,
     )
   }
 }
