@@ -37,5 +37,6 @@ describe('Resend sending guidance', () => {
     }
     expect(skill).toContain('`trigger:<id>`')
     expect(skill).toContain('category `approval`')
+    expect(skill).toContain('webhook Trigger cannot hold one')
   })
 })
