@@ -128,6 +128,9 @@ export const teamApi = {
   ) => ipcRenderer.invoke('localSetup:approveLinks', teamId, name, reviewed),
   localSetupSetAutoSync: (teamId: string, enabled: boolean) =>
     ipcRenderer.invoke('localSetup:setAutoSync', teamId, enabled),
+  localSetupSetFolders: (teamId: string, folders: string[]) =>
+    ipcRenderer.invoke('localSetup:setFolders', teamId, folders),
+  localSetupSources: (teamId: string) => ipcRenderer.invoke('localSetup:sources', teamId),
   teamSkillsImportLocal: (
     teamId: string,
     scope: string | undefined,
