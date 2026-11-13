@@ -11,6 +11,7 @@ import {
   Link2,
   MoreHorizontal,
   Pencil,
+  ScrollText,
   SmilePlus,
   X,
 } from 'lucide-react'
@@ -21,6 +22,7 @@ import { usePaneSummary } from '../../app/workspace/usePaneSummary'
 import { t } from '../../i18n'
 import { useAgentAvatarPick } from '../../lib/agentAvatarChoices'
 import { openChangeBotAvatar } from '../../lib/changeBotAvatar'
+import { copyBotInstructions } from '../../lib/copyBotInstructions'
 import { copyLinkWithFeedback } from '../../lib/copyLink'
 import { sessionShortcutCombo } from '../../lib/sessionShortcuts'
 import { useIsSubAgent } from '../../lib/subAgentIds'
@@ -127,6 +129,8 @@ export function SessionHeaderMenu({
         ),
     })
   }
+
+  const copyInstructions = () => void copyBotInstructions(teamId, sessionId)
 
   // ⌥⌘R, ⇧⌘C and ⇧⌘A run the same actions as the menu items below.
   const onShortcut = useRef<((action: string) => void) | null>(null)
@@ -256,6 +260,11 @@ export function SessionHeaderMenu({
             <MenuItem icon={<Hash className="h-3.5 w-3.5" />} onClick={() => copy(sessionId, 'ID')}>
               {isBot ? t('Bot ID') : t('Task ID')}
             </MenuItem>
+            {isBot && (
+              <MenuItem icon={<ScrollText className="h-3.5 w-3.5" />} onClick={copyInstructions}>
+                {t('Instructions')}
+              </MenuItem>
+            )}
           </MenuContent>
         </MenuSubmenu>
         {canArchive && (
